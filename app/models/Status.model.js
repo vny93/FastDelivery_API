@@ -15,5 +15,15 @@ class Status {
         })
     }
 
+    static get_id(data,result) {
+        db.query("select matrangthai from trangthai where tentrangthai = ? ",data.tentrangthai, function (err, Status) {
+            if (err) {
+                result(err)
+                return
+            }
+            result(Status)
+        })
+    }
+
 }
 module.exports = Status

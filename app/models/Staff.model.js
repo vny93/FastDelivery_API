@@ -145,5 +145,15 @@ class Staff {
         })
     }
 
+    //get shipper area
+    static get_shipper_area(data, result) {
+        db.query("call get_shipper_area(?,?)", [data.tenkhuvuc,data.tentrangthai], function (err, res) {
+            if (err || res.length == 0)
+                result(null)
+            else
+                result(res[0])
+        })
+    }
+
 }
 module.exports = Staff

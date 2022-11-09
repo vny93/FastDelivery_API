@@ -49,7 +49,7 @@ class Parcel {
     }
     //staff get parcel
     static staff_get_parcel(data, result) {
-        db.query("call staff_get_parcel(?,?,?,?)", [data.dateFrom, data.dateTo, data.matt, data.makho], function (err, res) {
+        db.query("call staff_get_parcel2(?,?,?)", [data.makho, data.diachi, data.trangthai], function (err, res) {
             if (err) {
                 result(err)
                 return
@@ -60,7 +60,7 @@ class Parcel {
 
     //shipper get parcel
     static shipper_get_parcel(data, result) {
-        db.query("call shipper_get_parcel(?,?,?,?)", [data.dateFrom, data.dateTo, data.matt, data.idshipper], function (err, res) {
+        db.query("call shipper_get_parcel2(?,?,?)", [data.idshipper, data.diachi, data.trangthai], function (err, res) {
             if (err) {
                 result(err)
                 return

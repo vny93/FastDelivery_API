@@ -16,5 +16,16 @@ class Warehouse {
         })
     }
 
+        //staff get parcel
+        static get_parcel_warehouse(data, result) {
+            db.query("call get_parcel_warehouse(?)", [data.trangthai], function (err, res) {
+                if (err) {
+                    result(err)
+                    return
+                }
+                result(res[0])
+            })
+        }
+
 }
 module.exports = Warehouse

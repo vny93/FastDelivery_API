@@ -27,4 +27,6 @@ module.exports = function(router){
 
     router.post('/v2/staff/checkCmnd',staffController.checkCmnd)
 
+    router.post('/v2/staff/get/shipper/area',staffController.get_shipper_area)
+
 }

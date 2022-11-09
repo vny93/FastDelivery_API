@@ -121,3 +121,10 @@ exports.checkCmnd = function (req, res) {
             res.send({ result: response })
     })
 }
+
+exports.get_shipper_area = function (req, res) {
+    Staff.get_shipper_area(req.body, function (response) {
+            res.send({ result: response })
+    })
+}
+
