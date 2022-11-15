@@ -4,6 +4,9 @@ module.exports = function (router) {
   //get list tk
   router.get('/v2/auth/list', authController.get_list)
 
+    //check
+  router.post('/v2/auth/check', authController.check)
+
   //update tk
   router.put('/v2/auth/update/password', authController.update_password)
 

@@ -21,3 +21,22 @@ exports.get_detail = function (req, res) {
         }
     })
 }
+
+exports.checkPhone = function (req, res) {
+    Shop.checkPhone(req.body.sdt, function (response) {
+        res.send({ result: response })
+    })
+}
+
+exports.checkEmail = function (req, res) {
+    Shop.checkEmail(req.body.email, function (response) {
+        res.send({ result: response })
+    })
+}
+
+exports.adminUpdate = function (req, res) {
+    Shop.adminUpdate(req.body, function (response) {
+        res.send({ result: response })
+    })
+
+}

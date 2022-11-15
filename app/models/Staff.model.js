@@ -121,7 +121,7 @@ class Staff {
             if (err || Staff.length == 0)
                 result(false)
             else
-                result(true)
+                result(Staff[0].sdt)
         })
     }
 
@@ -131,7 +131,7 @@ class Staff {
             if (err || Staff.length == 0)
                 result(false)
             else
-                result(true)
+                result(Staff[0].email)
         })
     }
 
@@ -141,7 +141,7 @@ class Staff {
             if (err || Staff.length == 0)
                 result(false)
             else
-                result(true)
+                result(Staff[0].cmnd)
         })
     }
 

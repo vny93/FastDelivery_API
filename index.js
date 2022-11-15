@@ -39,6 +39,8 @@ require('./app/routers/Shop.router')(app)
 require('./app/routers/Status.router')(app)
 require('./app/routers/Way.router')(app)
 require('./app/routers/DetailStatus.router')(app)
+require('./app/routers/DetailRegister.router')(app)
+require('./app/routers/Area.router')(app)
 
 app.listen(4000,function(){
     console.log("Server listening on http://localhost:4000");

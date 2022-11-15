@@ -57,12 +57,7 @@ exports.get_role = function (req, res) {
 //check
 exports.check = function (req, res) {
     Auth.check(req.body, function (response) {
-        if(response){
-            res.send({ result: response })
-        }
-        else{
-            res.status(404).json("not find")
-        }
+        res.send({ result: response })
     })
 }
 
@@ -118,20 +113,6 @@ exports.login = function (req, res) {
         else return res.status(401).json("Not find")
     })
 
-}
-
-//update password
-exports.update_password = function (req, res) {
-    Auth.checkIdExist(req.body.tendangnhap, function (response) {
-        if(response){
-            Auth.updatePassword(req.body, function (response) {
-                res.send({ result: response })
-            })
-        }
-        else{
-            res.status(404).json("not find")
-        }
-    })
 }
 
 //update status

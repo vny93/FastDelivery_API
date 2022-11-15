@@ -15,5 +15,15 @@ class Way {
         })
     }
 
+    //check way exist
+    static checkWayExist(mabk, result) {
+        db.query("call check_way_exist(?)", mabk, function (err, res) {
+            if (err || res[0].length == 0)
+                result(false)
+            else
+                result(true)
+        })
+    }
+
 }
 module.exports = Way

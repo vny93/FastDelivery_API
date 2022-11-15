@@ -10,3 +10,19 @@ exports.get_list = function (req, res) {
         res.status(500).json(err)
     }
 }
+
+exports.detail = function (req, res) {
+    Role.getById(req.body.maquyen, function (response) {
+        if(response){
+            res.send({ result: response })
+        }
+    })
+}
+
+exports.getRoleByAuth = function (req, res) {
+    Role.getRoleByAuth(req.body.tendangnhap, function (response) {
+        if(response){
+            res.send({ result: response })
+        }
+    })
+}

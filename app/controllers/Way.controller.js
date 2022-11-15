@@ -16,3 +16,10 @@ exports.add = function (req, res) {
         res.send({ result: response })
     })
 }
+
+
+exports.checkWayExist = function (req, res) {
+    Way.checkWayExist(req.body.mabk, function (response) {
+        res.send({ result: response })
+    })
+}
