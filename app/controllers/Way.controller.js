@@ -19,7 +19,18 @@ exports.add = function (req, res) {
 
 
 exports.checkWayExist = function (req, res) {
-    Way.checkWayExist(req.body.mabk, function (response) {
+    Way.checkWayExist(req.body, function (response) {
+        if(response){
+            res.send({ result: response })
+        }
+        else{
+            res.status(404).json("not find")
+        }
+    })
+}
+
+exports.update = function (req, res) {
+    Way.update(req.body, function (response) {
         res.send({ result: response })
     })
 }

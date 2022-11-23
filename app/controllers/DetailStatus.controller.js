@@ -24,3 +24,9 @@ exports.add = function (req, res) {
         res.send({ result: response })
     })
 }
+
+exports.count = function (req, res) {
+    DetailStatus.count(req.body.mabk, function (response) {
+        res.send({ result: response })
+    })
+}

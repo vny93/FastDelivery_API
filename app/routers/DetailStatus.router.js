@@ -3,4 +3,5 @@ module.exports = function(router){
 
     router.post('/v2/detailStatus/add', detailStatusController.add)
 
+    router.post('/v2/detailStatus/count', detailStatusController.count)
 }

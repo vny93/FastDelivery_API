@@ -16,12 +16,22 @@ class Way {
     }
 
     //check way exist
-    static checkWayExist(mabk, result) {
-        db.query("call check_way_exist(?)", mabk, function (err, res) {
+    static checkWayExist(data, result) {
+        db.query("call check_way_exist(?,?)", [data.mabk, data.matt], function (err, res) {
             if (err || res[0].length == 0)
-                result(false)
+                result(null)
             else
-                result(true)
+                result(res[0])
+        })
+    }
+
+    //update
+    static update(data, result) {
+        db.query("update duongdi set trangthai = ? where mabk = ? and makho = ?", [data.trangthai, data.mabk, data.makho], function (err, Staff) {
+            if (err)
+                result(null)
+            else
+                result("Cập nhật thông tin thành công")
         })
     }
 

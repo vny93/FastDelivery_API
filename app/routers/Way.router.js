@@ -4,4 +4,6 @@ module.exports = function(router){
   router.post('/v2/way/add', wayController.add)
 
   router.post('/v2/way/check/exist', wayController.checkWayExist)
+
+  router.post('/v2/way/update', wayController.update)
 }

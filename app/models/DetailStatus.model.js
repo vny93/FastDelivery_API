@@ -17,6 +17,16 @@ class DetailStatus {
                 result("Thêm thành công")
         })
     }
+
+    //count delivered fail
+    static count(mabk, result) {
+        db.query("call count_delivery_failed(?)", mabk, function (err, res) {
+            if (err || res[0].length == 0)
+                result(null)
+            else
+                result(res[0])
+        })
+    }
 }
 
 module.exports = DetailStatus

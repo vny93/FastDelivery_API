@@ -29,6 +29,7 @@ require('./app/routers/Parcel.router')(app)
 require('./app/routers/DetailParcel.router')(app)
 require('./app/routers/Role.router')(app)
 require('./app/routers/DetailStatus2.router')(app)
+require('./app/routers/Mail.router')(app)
 app.use(_AuthMiddleWare.isAuth) // check token hợp lệ thì sẽ được chạy những routers phía dưới 
 require('./app/routers/Auth.router')(app)
 require('./app/routers/Staff.router')(app)

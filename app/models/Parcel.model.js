@@ -68,5 +68,97 @@ class Parcel {
             result(res[0])
         })
     }
+
+    //update
+    static updatePaymentStatus(data, result) {
+        db.query("update buukien set tinhtrangthanhtoan = ? where mabk = ?", [data.trangthaitt, data.mabk], function (err, res) {
+            if (err)
+                result(null)
+            else
+                result("Cập nhật thông tin thành công")
+        })
+    }
+
+    static admin_statistics1(data, result) {
+        db.query("call admin_statistics1(?,?)", [data.dateFrom, data.dateTo], function (err, res) {
+            if (err) {
+                result(err)
+                return
+            }
+            result(res[0])
+        })
+    }
+
+    static admin_statistics2(data, result) {
+        db.query("call admin_statistics2(?,?,?)", [data.dateFrom, data.dateTo, data.trangthai], function (err, res) {
+            if (err) {
+                result(err)
+                return
+            }
+            result(res[0])
+        })
+    }
+
+    static admin_turnover(data, result) {
+        db.query("call admin_turnover(?,?)", [data.dateFrom, data.dateTo], function (err, res) {
+            if (err) {
+                result(err)
+                return
+            }
+            result(res[0])
+        })
+    }
+
+    static map(data,result){
+        console.log("vô 2")
+        var len = data.encoded.length;
+        console.log(len)
+        var index = 0;
+        var array = [];
+        var lat = 0;
+        var lng = 0;
+        var ele = 0;
+    
+        while (index < len) {
+            var b;
+            var shift = 0;
+            var result = 0;
+            do {
+                b = data.encoded.charCodeAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            var deltaLat = ((result & 1) ? ~(result >> 1) : (result >> 1));
+            lat += deltaLat;
+    
+            shift = 0;
+            result = 0;
+            do {
+                b = data.encoded.charCodeAt(index++) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            var deltaLon = ((result & 1) ? ~(result >> 1) : (result >> 1));
+            lng += deltaLon;
+    
+            if (data.is3D) {
+                // elevation
+                shift = 0;
+                result = 0;
+                do {
+                    b = data.encoded.charCodeAt(index++) - 63;
+                    result |= (b & 0x1f) << shift;
+                    shift += 5;
+                } while (b >= 0x20);
+                var deltaEle = ((result & 1) ? ~(result >> 1) : (result >> 1));
+                ele += deltaEle;
+                array.push([lng * 1e-5, lat * 1e-5, ele / 100]);
+            } else
+                array.push([lng * 1e-5, lat * 1e-5]);
+        }
+        // var end = new Date().getTime();
+        // console.log("decoded " + len + " coordinates in " + ((end - start) / 1000) + "s");
+        result(array[0])
+    }
 }
 module.exports = Parcel
