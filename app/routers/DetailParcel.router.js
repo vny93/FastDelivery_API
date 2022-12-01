@@ -3,4 +3,5 @@ module.exports = function(router){
 
     router.post('/v2/detailParcel/add', detailParcelController.add)
 
+    router.post('/v2/detailParcel/get', detailParcelController.get)
 }

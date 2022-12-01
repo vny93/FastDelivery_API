@@ -109,7 +109,18 @@ class Parcel {
         })
     }
 
-    static map(data,result){
+    //admin get parcel 
+    static full_status_detail(id, result) {
+        db.query("call full_status_detail(?)", id, function (err, res) {
+            if (err) {
+                result(err)
+                return
+            }
+            result(res[0])
+        })
+    }
+
+    static map(data, result) {
         console.log("vô 2")
         var len = data.encoded.length;
         console.log(len)
@@ -118,7 +129,7 @@ class Parcel {
         var lat = 0;
         var lng = 0;
         var ele = 0;
-    
+
         while (index < len) {
             var b;
             var shift = 0;
@@ -130,7 +141,7 @@ class Parcel {
             } while (b >= 0x20);
             var deltaLat = ((result & 1) ? ~(result >> 1) : (result >> 1));
             lat += deltaLat;
-    
+
             shift = 0;
             result = 0;
             do {
@@ -140,7 +151,7 @@ class Parcel {
             } while (b >= 0x20);
             var deltaLon = ((result & 1) ? ~(result >> 1) : (result >> 1));
             lng += deltaLon;
-    
+
             if (data.is3D) {
                 // elevation
                 shift = 0;

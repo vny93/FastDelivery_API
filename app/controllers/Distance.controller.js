@@ -37,3 +37,27 @@ exports.update = function (req, res) {
         }
     })
 }
+
+exports.create = function (req, res) {
+    Distance.create(req.body, function (response) {
+        if(response){
+            res.send({ result: response })
+        }
+    })
+}
+
+exports.get_max = function (req, res) {
+    Distance.get_max(function (response) {
+        if(response){
+            res.send({ result: response })
+        }
+    })
+}
+
+exports.remove = function (req, res) {
+    Distance.remove(req.body.makc,function (response) {
+        if(response){
+            res.send({ result: response })
+        }
+    })
+}

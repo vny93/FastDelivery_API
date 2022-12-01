@@ -73,6 +73,16 @@ exports.admin_turnover = function (req, res) {
     }
 }
 
+exports.full_status_detail = function (req, res) {
+    try {
+        Parcel.full_status_detail(req.body.mabk,function (response) {
+            res.send({ result: response })
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+}
+
 // exports.prototype = function (req, res) {
 //     console.log("vô ne")
 //     try {

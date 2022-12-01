@@ -47,5 +47,35 @@ class Distance {
                 result("Cập nhật thông tin thành công")
         })
     }
+
+    //add 
+    static create(data, result) {
+        db.query("insert into khoangcach set ?", data, function (err, res) {
+            if (err)
+                result(null)
+            else
+                result("Thêm khoảng cách thành công")
+        })
+    }
+
+    //get max 
+    static get_max(result) {
+        db.query("select MAX(kcketthuc) as max from khoangcach", function (err, res) {
+            if (err)
+                result(null)
+            else
+                result(res)
+        })
+    }
+
+    //delete
+    static remove(id, result) {
+        db.query("delete from khoangcach where makc = ?", id, function (err, res) {
+            if (err)
+                result(null)
+            else
+                result("Xóa khoảng cách " + id + " thành công")
+        })
+    }
 }
 module.exports = Distance

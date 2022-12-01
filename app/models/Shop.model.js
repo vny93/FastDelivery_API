@@ -19,6 +19,17 @@ class Shop {
         })
     }
 
+
+    //get profile
+    static getProfile(id, result) {
+        db.query("select * from cuahang where tendangnhap = ?", id, function (err, Shop) {
+            if (err || Shop.length == 0)
+                result(null)
+            else
+                result(Shop[0])
+        })
+    }
+
     //get by id
     static getShopById(id, result) {
         db.query("select * from cuahang where mach = ?", id, function (err, Shop) {
@@ -35,7 +46,7 @@ class Shop {
             if (err || Shop.length == 0)
                 result(false)
             else
-                result(Shop[0].sdt)
+                result(true)
         })
     }
 
@@ -45,7 +56,7 @@ class Shop {
             if (err || Shop.length == 0)
                 result(false)
             else
-                result(Shop[0].email)
+                result(true)
         })
     }
 
@@ -58,6 +69,47 @@ class Shop {
                 else
                     result("Cập nhật thông tin thành công")
             })
+    }
+
+    //add tk
+    static create(data, result) {
+        db.query("insert into cuahang set ?", data, function (err, Shop) {
+            if (err)
+                result(null)
+            else
+                result("Thêm cửa hàng thành công")
+        })
+    }
+
+
+    //get automatic id staff
+    static automaticId(result) {
+        db.query("call automatic_id_shop()", function (err, res) {
+            if (err || res[0].length == 0)
+                result(res[0])
+            else
+                result(res[0])
+        })
+    }
+
+    //get automatic id staff
+    static shop_get_parcel(data,result) {
+        db.query("call shop_get_parcel(?,?,?)",[data.mach,data.diachi,data.trangthai], function (err, res) {
+            if (err || res[0].length == 0)
+                result(res[0])
+            else
+                result(res[0])
+        })
+    }
+
+    //update
+    static update(data, result) {
+        db.query("update cuahang set sdt = ? where mach = ?", [data.sdt, data.mach], function (err, Staff) {
+            if (err)
+                result(null)
+            else
+                result("Cập nhật thông tin thành công")
+        })
     }
 
 }

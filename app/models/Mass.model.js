@@ -47,5 +47,34 @@ class Mass {
                 result("Cập nhật thông tin thành công")
         })
     }
+
+    //add 
+    static create(data, result) {
+        db.query("insert into khoiluong set ?", data, function (err, res) {
+            if (err)
+                result(null)
+            else
+                result("Thêm khối lượng thành công")
+        })
+    }
+
+    //get max 
+    static get_max(result) {
+        db.query("select MAX(klketthuc) as max from khoiluong", function (err, res) {
+            if (err)
+                result(null)
+            else
+                result(res)
+        })
+    }
+    //delete
+    static remove(id, result) {
+        db.query("delete from khoiluong where makl = ?", id, function (err, res) {
+            if (err)
+                result(null)
+            else
+                result("Xóa khối lượng " + id + " thành công")
+        })
+    }
 }
 module.exports = Mass

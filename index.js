@@ -30,6 +30,7 @@ require('./app/routers/DetailParcel.router')(app)
 require('./app/routers/Role.router')(app)
 require('./app/routers/DetailStatus2.router')(app)
 require('./app/routers/Mail.router')(app)
+require('./app/routers/Shop2.router')(app)
 app.use(_AuthMiddleWare.isAuth) // check token hợp lệ thì sẽ được chạy những routers phía dưới 
 require('./app/routers/Auth.router')(app)
 require('./app/routers/Staff.router')(app)
@@ -42,6 +43,7 @@ require('./app/routers/Way.router')(app)
 require('./app/routers/DetailStatus.router')(app)
 require('./app/routers/DetailRegister.router')(app)
 require('./app/routers/Area.router')(app)
+require('./app/routers/Salary.router')(app)
 
 app.listen(4000,function(){
     console.log("Server listening on http://localhost:4000");

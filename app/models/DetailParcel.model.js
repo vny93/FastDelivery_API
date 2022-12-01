@@ -16,5 +16,16 @@ class DetailParcel {
                 result(data)
         })
     }
+
+    static get_DetailParcel(mabk, result) {
+        db.query("select * from chitietbuukien where mabk = ?", mabk, function (err, res) {
+            if (err)
+                result(null)
+            else
+                result(res)
+        })
+    }
+
+
 }
 module.exports = DetailParcel

@@ -6,3 +6,9 @@ exports.add = function (req, res) {
         res.send({ result: response })
     })
 }
+
+exports.get = function (req, res) {
+    DetailParcel.get_DetailParcel(req.body.mabk, function (response) {
+        res.send({ result: response })
+    })
+}

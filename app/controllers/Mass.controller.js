@@ -37,3 +37,27 @@ exports.update = function (req, res) {
         }
     })
 }
+
+exports.create = function (req, res) {
+    Mass.create(req.body, function (response) {
+        if(response){
+            res.send({ result: response })
+        }
+    })
+}
+
+exports.get_max = function (req, res) {
+    Mass.get_max(function (response) {
+        if(response){
+            res.send({ result: response })
+        }
+    })
+}
+
+exports.remove = function (req, res) {
+    Mass.remove(req.body.makl,function (response) {
+        if(response){
+            res.send({ result: response })
+        }
+    })
+}
