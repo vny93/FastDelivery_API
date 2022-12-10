@@ -101,8 +101,13 @@ exports.login = function (req, res) {
         if (response) {
             Auth.check_login(req.body, async function (response) {
                 if (response) {
+                    if(response == 1){
+                        res.send({ accessToken: "", maquyen : 0})
+                    }
+                    else{
                     const accessToken = await JWT.make(response)
                     res.send({ accessToken: accessToken, maquyen : response.maquyen})
+                    }
                 }
                 else {
                     return res.status(401).json("Not find")

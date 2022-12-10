@@ -99,6 +99,26 @@ class Parcel {
         })
     }
 
+    static admin_statistics3(data, result) {
+        db.query("call admin_statistics3(?,?)", [data.dateFrom, data.dateTo], function (err, res) {
+            if (err) {
+                result(err)
+                return
+            }
+            result(res[0])
+        })
+    }
+
+    static shipper_statistics(data, result) {
+        db.query("call shipper_statistics(?,?,?)", [data.idShipper, data.dateFrom, data.dateTo], function (err, res) {
+            if (err) {
+                result(err)
+                return
+            }
+            result(res[0])
+        })
+    }
+
     static admin_turnover(data, result) {
         db.query("call admin_turnover(?,?)", [data.dateFrom, data.dateTo], function (err, res) {
             if (err) {

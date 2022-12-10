@@ -10,12 +10,12 @@ class Shop {
     }
     //get list 
     static get_all(result) {
-        db.query("select * from cuahang ", function (err, Shop) {
+        db.query("call get_list_shop()", function (err, res) {
             if (err) {
                 result(err)
                 return
             }
-            result(Shop)
+            result(res[0])
         })
     }
 

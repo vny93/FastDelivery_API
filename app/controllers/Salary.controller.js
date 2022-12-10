@@ -6,3 +6,15 @@ exports.shipper_get_salary = function (req, res) {
         res.send({ result: response })
     })
 }
+
+exports.check_salary = function (req, res) {
+    Salary.check_salary(req.body, function (response) {
+        res.send({ result: response })
+    })
+}
+
+exports.create = function (req, res) {
+    Salary.create(req.body, function (response) {
+        res.send({ result: response })
+    })
+}

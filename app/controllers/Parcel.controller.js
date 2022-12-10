@@ -63,6 +63,26 @@ exports.admin_statistics2 = function (req, res) {
     }
 }
 
+exports.admin_statistics3 = function (req, res) {
+    try {
+        Parcel.admin_statistics3(req.body,function (response) {
+            res.send({ result: response })
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+}
+
+exports.shipper_statistics = function (req, res) {
+    try {
+        Parcel.shipper_statistics(req.body,function (response) {
+            res.send({ result: response })
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+}
+
 exports.admin_turnover = function (req, res) {
     try {
         Parcel.admin_turnover(req.body,function (response) {

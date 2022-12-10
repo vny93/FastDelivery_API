@@ -15,6 +15,10 @@ module.exports = function(router){
 
     router.post('/v2/parcel/admin/statistics2', parcelController.admin_statistics2)
 
+    router.post('/v2/parcel/admin/statistics3', parcelController.admin_statistics3)
+
+    router.post('/v2/parcel/shipper/statistics', parcelController.shipper_statistics)
+
     router.post('/v2/parcel/admin/turnover', parcelController.admin_turnover)
 
     router.post('/v2/parcel/map', parcelController.prototype)

@@ -15,5 +15,24 @@ class Salary {
                 result(res[0])
         })
     }
+
+    static check_salary(data, result) {
+        db.query("call check_salary(?,?)", [data.id, data.mdate], function (err, res) {
+            if (err || res[0].length == 0)
+                result(false)
+            else
+                result(true)
+        })
+    }
+
+    //add 
+    static create(data, result) {
+        db.query("insert into luong set ?", data, function (err, res) {
+            if (err)
+                result(null)
+            else
+                result("Phát lương thành công")
+        })
+    }
 }
 module.exports = Salary

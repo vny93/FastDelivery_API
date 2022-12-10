@@ -15,7 +15,12 @@ exports.check_register_area = function (req, res) {
 }
 
 exports.create = function (req, res) {
-    DetailRegister.create(req.body, function (response) {
+    var data = {
+        mashipper : req.body.mashipper,
+        makhuvuc : req.body.makhuvuc,
+        trangthai : 0
+    }
+    DetailRegister.create(data, function (response) {
         res.send({ result: response })
     })
 
@@ -25,4 +30,11 @@ exports.delete = function (req, res) {
     DetailRegister.remove(req.body, function (response) {
         res.send({ result: response })
     })
+}
+
+exports.update_status = function (req, res) {
+    DetailRegister.updateStatus(req.body, function (response) {
+        res.send({ result: response })
+    })
+
 }

@@ -8,4 +8,6 @@ module.exports = function(router){
   router.post('/v2/detailRegister/add',detailRegisterController.create)
 
   router.post('/v2/detailRegister/delete', detailRegisterController.delete)
+
+  router.post('/v2/detailRegister/update/status', detailRegisterController.update_status)
 }

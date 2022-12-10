@@ -102,8 +102,11 @@ class Auth {
     //check login trả về token
     static check_login(data, result) {
         db.query("select * from taikhoan where tendangnhap = ? and matkhau = ?", [data.tendangnhap, data.matkhau], function (err, Auth) {
-            if (err || Auth.length == 0 || Auth[0].trangthai == 1) {
+            if (err || Auth.length == 0) {
                 result(null)
+            }
+            else if( Auth[0].trangthai == 1){
+                result(1)
             }
             else {
                 result(Auth[0])
