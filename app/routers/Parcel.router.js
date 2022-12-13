@@ -26,4 +26,6 @@ module.exports = function(router){
     router.post('/v2/parcel/generatePassword', parcelController.generatePassword)
 
     router.post('/v2/parcel/full/status/detail', parcelController.full_status_detail)
+
+    router.post('/v2/parcel/get/cancelInfor', parcelController.get_cancel_infor)
 }

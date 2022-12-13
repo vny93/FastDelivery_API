@@ -103,6 +103,16 @@ exports.full_status_detail = function (req, res) {
     }
 }
 
+exports.get_cancel_infor = function (req, res) {
+    try {
+        Parcel.get_cancel_infor(req.body.mabk,function (response) {
+            res.send({ result: response })
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+}
+
 // exports.prototype = function (req, res) {
 //     console.log("vô ne")
 //     try {

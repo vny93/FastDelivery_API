@@ -129,9 +129,19 @@ class Parcel {
         })
     }
 
-    //admin get parcel 
     static full_status_detail(id, result) {
         db.query("call full_status_detail(?)", id, function (err, res) {
+            if (err) {
+                result(err)
+                return
+            }
+            result(res[0])
+        })
+    }
+
+
+    static get_cancel_infor(id, result) {
+        db.query("call get_cancel_infor(?)", id, function (err, res) {
             if (err) {
                 result(err)
                 return
