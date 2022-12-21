@@ -29,4 +29,8 @@ module.exports = function(router){
 
     router.post('/v2/staff/get/shipper/area',staffController.get_shipper_area)
 
+    router.post('/v2/staff/get/shipper/area2',staffController.get_shipper_area2)
+
+    router.post('/v2/staff/get/list/cancel',staffController.get_list_cancel)
+
 }

@@ -16,6 +16,24 @@ class Salary {
         })
     }
 
+    static shipper_collection(data, result) {
+        db.query("call shipper_collection(?,?,?)", [data.idshipper, data.dateFrom, data.dateTo], function (err, res) {
+            if (err || res.length == 0)
+                result(res[0])
+            else
+                result(res[0])
+        })
+    }
+
+    static admin_collection(data, result) {
+        db.query("call admin_collection(?,?)",[data.dateFrom, data.dateTo], function (err, res) {
+            if (err || res.length == 0)
+                result(res[0])
+            else
+                result(res[0])
+        })
+    }
+
     static check_salary(data, result) {
         db.query("call check_salary(?,?)", [data.id, data.mdate], function (err, res) {
             if (err || res[0].length == 0)

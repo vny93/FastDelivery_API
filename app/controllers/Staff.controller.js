@@ -128,3 +128,15 @@ exports.get_shipper_area = function (req, res) {
     })
 }
 
+exports.get_shipper_area2 = function (req, res) {
+    Staff.get_shipper_area2(req.body, function (response) {
+            res.send({ result: response })
+    })
+}
+
+exports.get_list_cancel = function (req, res) {
+    Staff.get_list_cancel(req.body, function (response) {
+            res.send({ result: response })
+    })
+}
+

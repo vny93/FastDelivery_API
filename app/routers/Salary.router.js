@@ -5,5 +5,9 @@ module.exports = function(router){
 
   router.post('/v2/salary/check', salaryController.check_salary)
 
+  router.post('/v2/salary/shipper/collection', salaryController.shipper_collection)
+
+  router.post('/v2/salary/admin/collection', salaryController.admin_collection)
+
   router.post('/v2/salary/add', salaryController.create)
 }
