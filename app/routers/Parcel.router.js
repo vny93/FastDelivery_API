@@ -5,6 +5,8 @@ module.exports = function(router){
 
     router.post('/v2/parcel/admin/get', parcelController.admin_get_parcel)
 
+    router.post('/v2/parcel/get/detail', parcelController.get_detail_parcel)
+
     router.post('/v2/parcel/staff/get', parcelController.staff_get_parcel)
 
     router.post('/v2/parcel/shipper/get', parcelController.shipper_get_parcel)

@@ -27,16 +27,17 @@ class Parcel {
         })
     }
 
-    //admin get parcel
-    // static admin_get_parcel(data, result) {
-    //     db.query("call admin_get_parcel(?,?,?)", [data.dateFrom, data.dateTo, data.trangthai], function (err, res) {
-    //         if (err) {
-    //             result(err)
-    //             return
-    //         }
-    //         result(res[0])
-    //     })
-    // }
+    //admin get parcel 
+    static get_detail_parcel(id, result) {
+        db.query("select * from buukien where mabk = ?", [id], function (err, res) {
+            if (err) {
+                result(err)
+                return
+            }
+            result(res[0])
+        })
+    }
+
     //admin get parcel 
     static admin_get_parcel(data, result) {
         db.query("call admin_get_parcel2(?,?)", [data.diachi, data.trangthai], function (err, res) {

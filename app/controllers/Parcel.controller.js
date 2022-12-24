@@ -7,6 +7,12 @@ exports.add = function (req, res) {
     })
 }
 
+exports.get_detail_parcel = function (req, res) {
+    Parcel.get_detail_parcel(req.body.mabk, function (response) {
+        res.send({ result: response })
+    })
+}
+
 exports.admin_get_parcel = function (req, res) {
     try {
         Parcel.admin_get_parcel(req.body,function (response) {
